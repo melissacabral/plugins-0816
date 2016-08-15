@@ -26,7 +26,7 @@ function rad_ab_html(){
 }
 
 /**
- * Attach a stylesheet
+ * Attach a stylesheet & JS
  */
 add_action( 'wp_enqueue_scripts', 'rad_ab_style' );
 function rad_ab_style(){
@@ -34,6 +34,12 @@ function rad_ab_style(){
 	$url = plugins_url( 'css/rad-bar-style.css', __FILE__ );
 	//tell WP about it and put it on the page
 	wp_enqueue_style( 'rad-bar-style', $url );
+
+	//attach jquery (built in to WP)
+	wp_enqueue_script( 'jquery' );
+	//attach our custom js
+	$js = plugins_url( 'js/rad_ab.js', __FILE__ );
+	wp_enqueue_script( 'rad-bar-script', $js, array('jquery') );
 }
 
 /**
